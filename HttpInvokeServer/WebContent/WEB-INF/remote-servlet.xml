@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- 通过Spring HttpInvoker机制暴露远程访问服务 -->
+	<bean id="rmiService" class="FirstDemoServerImpl" />
+	<bean name="/remoteService"
+		class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+		<property name="service" ref="rmiService" />
+		<property name="serviceInterface" value="FirstDemoService" />
+	</bean>
+</beans>
